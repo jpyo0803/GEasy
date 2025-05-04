@@ -21,13 +21,13 @@ namespace Geasy.Tests
         }
 
         [Fact]
-        public void TestDistanceTo_Float()
+        public void TestDistance_Float()
         {
             Point2dFloat pointA = new Point2dFloat(1.0f, 2.0f);
             Point2dFloat pointB = new Point2dFloat(4.0f, 6.0f);
 
             double expectedDistance = Math.Sqrt(3 * 3 + 4 * 4); // 5.0
-            double actualDistance = pointA.DistanceTo(pointB);
+            double actualDistance = Point2dFloat.Distance(pointA, pointB);
 
             Assert.True(HelperFunc.NearlyEqualDouble(actualDistance, expectedDistance), "Distance should be approximately 5.0");
         }

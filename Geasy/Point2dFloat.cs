@@ -78,5 +78,17 @@ namespace Geasy
         {
             return !(a == b); // use the equality operator to determine inequality
         }
+
+        public static double Distance(Point2dFloat a, Point2dFloat b)
+        {
+            if (a is null || b is null)
+            {
+                throw new ArgumentNullException("Points cannot be null.");
+            }
+
+            double dx = (double)a.X - (double)b.X;
+            double dy = (double)a.Y - (double)b.Y;
+            return Math.Sqrt(dx * dx + dy * dy);
+        }
     }
 }

@@ -8,7 +8,5 @@ namespace Geasy
     {
         T X { get; set; }
         T Y { get; set; }
-
-        double DistanceTo(IPoint2d<T> other);
     }
 }
