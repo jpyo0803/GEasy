@@ -28,6 +28,7 @@ namespace Geasy
             Y = end.Y - start.Y;
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static Vector2dFloat FromPoints(IPoint2d<float> start, IPoint2d<float> end)
         {
             if (start == null || end == null)
@@ -38,21 +39,25 @@ namespace Geasy
             return new Vector2dFloat(end.X - start.X, end.Y - start.Y);
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static Vector2dFloat operator +(Vector2dFloat a, Vector2dFloat b)
         {
             return new Vector2dFloat(a.X + b.X, a.Y + b.Y);
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static Vector2dFloat operator -(Vector2dFloat a, Vector2dFloat b)
         {
             return new Vector2dFloat(a.X - b.X, a.Y - b.Y);
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static Vector2dFloat operator *(Vector2dFloat v, double scalar)
         {
             return new Vector2dFloat((float)(v.X * scalar), (float)(v.Y * scalar));
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static Vector2dFloat operator /(Vector2dFloat v, double scalar)
         {
             // TODO(jpyo0803): if scalar is very close to zero, should it stop further calculation?
@@ -67,6 +72,7 @@ namespace Geasy
             return new Vector2dFloat((float)(v.X / scalar), (float)(v.Y / scalar));
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static double Cross(Vector2dFloat a, Vector2dFloat b)
         {
             double ax = a.X, ay = a.Y;
@@ -75,6 +81,7 @@ namespace Geasy
             return ax * by - ay * bx;
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static double Dot(Vector2dFloat a, Vector2dFloat b)
         {
             double ax = a.X, ay = a.Y;
@@ -83,6 +90,7 @@ namespace Geasy
             return ax * bx + ay * by;
         }
 
+        // Specific to this concrete class, not part of the interface
         public override string ToString() => $"({X}, {Y})";
     }
 }

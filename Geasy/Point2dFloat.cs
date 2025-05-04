@@ -18,18 +18,7 @@ namespace Geasy
             Y = y;
         }
 
-        public double DistanceTo(IPoint2d<float> other)
-        {
-            if (other == null)
-            {
-                throw new ArgumentNullException(nameof(other), "The other point cannot be null.");
-            }
-            // cast float to double for distance calculation
-            double dx = (double)X - (double)other.X;
-            double dy = (double)Y - (double)other.Y;
-            return Math.Sqrt(dx * dx + dy * dy);
-        }
-
+        // Specific to this concrete class, not part of the interface
         public override bool Equals(object obj)
         {
             if (!(obj is Point2dFloat other))
@@ -40,6 +29,7 @@ namespace Geasy
             return Equals(other); // call the other Equals method
         }
 
+        // Specific to this concrete class, not part of the interface
         public bool Equals(Point2dFloat other)
         {
             if (other is null)
@@ -51,6 +41,7 @@ namespace Geasy
             return Math.Abs(X - other.X) < epsilon && Math.Abs(Y - other.Y) < epsilon;
         }
 
+        // Specific to this concrete class, not part of the interface
         public override int GetHashCode()
         {
             unchecked
@@ -62,11 +53,13 @@ namespace Geasy
             }
         }
 
+        // Specific to this concrete class, not part of the interface
         public override string ToString()
         {
             return $"Point2d({X}, {Y})";
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static bool operator ==(Point2dFloat a, Point2dFloat b)
         {
             if (a is null && b is null) return true;
@@ -74,11 +67,13 @@ namespace Geasy
             return a.Equals(b); // neither a nor b is null
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static bool operator !=(Point2dFloat a, Point2dFloat b)
         {
             return !(a == b); // use the equality operator to determine inequality
         }
 
+        // Move it to the interface in the future when C#11 is used
         public static double Distance(IPoint2d<float> a, IPoint2d<float> b)
         {
             if (a is null || b is null)
@@ -91,6 +86,7 @@ namespace Geasy
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
+        // Move it to the interface in the future when C#11 is used
         // Is Counter Clockwise
         // Returns 0 if collinear, >0 if counter-clockwise, <0 if clockwise
         public static int IsCCW(IPoint2d<float> p1, IPoint2d<float> p2, IPoint2d<float> p3)
