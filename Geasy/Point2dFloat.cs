@@ -79,7 +79,7 @@ namespace Geasy
             return !(a == b); // use the equality operator to determine inequality
         }
 
-        public static double Distance(Point2dFloat a, Point2dFloat b)
+        public static double Distance(IPoint2d<float> a, IPoint2d<float> b)
         {
             if (a is null || b is null)
             {
@@ -93,7 +93,7 @@ namespace Geasy
 
         // Is Counter Clockwise
         // Returns 0 if collinear, >0 if counter-clockwise, <0 if clockwise
-        public static int IsCCW(Point2dFloat p1, Point2dFloat p2, Point2dFloat p3)
+        public static int IsCCW(IPoint2d<float> p1, IPoint2d<float> p2, IPoint2d<float> p3)
         {
             const double epsilon = 1e-9; // tolerance for floating point comparison
 

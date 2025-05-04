@@ -17,7 +17,7 @@ namespace Geasy
             Y = y;
         }
 
-        public Vector2dFloat(Point2dFloat start, Point2dFloat end)
+        public Vector2dFloat(IPoint2d<float> start, IPoint2d<float> end)
         {
             if (start == null || end == null)
             {
