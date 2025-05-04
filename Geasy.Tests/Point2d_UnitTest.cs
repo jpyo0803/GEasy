@@ -32,6 +32,21 @@ namespace Geasy.Tests
             Assert.True(NearlyEqualDouble(actualDistance, expectedDistance), "Distance should be approximately 5.0");
         }
 
+        [Fact]
+        public void TestEquals_Float()
+        {
+            Point2dFloat pointA = new Point2dFloat(1.0f, 2.0f);
+            Point2dFloat pointB = new Point2dFloat(1.0f, 2.0f);
+            Point2dFloat pointC = new Point2dFloat(3.0f, 4.0f);
+
+            Assert.True(pointA.Equals(pointB), "Point A should be equal to Point B");
+            Assert.False(pointA.Equals(pointC), "Point A should not be equal to Point C");
+
+            Assert.False(pointA.Equals(null), "Point A should not be equal to null");
+            int x = 5;
+            Assert.False(pointA.Equals(x), "Point A should not be equal to an integer");
+        }
+
         private static bool NearlyEqualFloat(float a, float b, float epsilon = 1e-6f)
         {
             return Math.Abs(a - b) < epsilon;
