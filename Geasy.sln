@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geasy", "Geasy.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeasyRunner", "GeasyRunner\GeasyRunner.csproj", "{7AE39AF0-0284-42FE-BE64-03C263234B8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geasy.Tests", "Geasy.Tests\Geasy.Tests.csproj", "{E7237DE0-E809-499E-9667-53A68B63BBA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{7AE39AF0-0284-42FE-BE64-03C263234B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AE39AF0-0284-42FE-BE64-03C263234B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AE39AF0-0284-42FE-BE64-03C263234B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7237DE0-E809-499E-9667-53A68B63BBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7237DE0-E809-499E-9667-53A68B63BBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7237DE0-E809-499E-9667-53A68B63BBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7237DE0-E809-499E-9667-53A68B63BBA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
