@@ -3,7 +3,7 @@
 */
 
 namespace Geasy {
-    public interface Point2d<T> where T : struct {
+    public interface IPoint2d<T> where T : struct {
         T X { get; set; }
         T Y { get; set; }
     }
