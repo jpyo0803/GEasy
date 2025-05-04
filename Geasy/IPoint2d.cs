@@ -6,5 +6,7 @@ namespace Geasy {
     public interface IPoint2d<T> where T : struct {
         T X { get; set; }
         T Y { get; set; }
+
+        double DistanceTo(IPoint2d<T> other);
     }
 }
