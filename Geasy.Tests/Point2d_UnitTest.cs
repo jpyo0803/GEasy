@@ -46,5 +46,22 @@ namespace Geasy.Tests
             int x = 5;
             Assert.False(pointA.Equals(x), "Point A should not be equal to an integer");
         }
+
+        [Fact]
+        public void TestIsCCW_Float()
+        {
+            Point2dFloat pointA = new Point2dFloat(0.0f, 0.0f);
+            Point2dFloat pointB = new Point2dFloat(1.0f, 0.0f);
+            Point2dFloat pointC = new Point2dFloat(1.0f, 1.0f);
+
+            Assert.True(Point2dFloat.IsCCW(pointA, pointB, pointC) == 1, "Points should be in counter-clockwise order");
+
+            pointC.Y = -1.0f;
+            Assert.True(Point2dFloat.IsCCW(pointA, pointB, pointC) == -1, "Points should be in clockwise order");
+
+            pointC.X = 2.0f;
+            pointC.Y = 0.0f;
+            Assert.True(Point2dFloat.IsCCW(pointA, pointB, pointC) == 0, "Points should be collinear");
+        }
     }
 }

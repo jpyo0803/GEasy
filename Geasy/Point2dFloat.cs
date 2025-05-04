@@ -90,5 +90,22 @@ namespace Geasy
             double dy = (double)a.Y - (double)b.Y;
             return Math.Sqrt(dx * dx + dy * dy);
         }
+
+        // Is Counter Clockwise
+        // Returns 0 if collinear, >0 if counter-clockwise, <0 if clockwise
+        public static int IsCCW(Point2dFloat p1, Point2dFloat p2, Point2dFloat p3)
+        {
+            const double epsilon = 1e-9; // tolerance for floating point comparison
+
+            double v1x = p2.X - p1.X, v1y = p2.Y - p1.Y;
+            double v2x = p3.X - p1.X, v2y = p3.Y - p1.Y;
+
+            double crossProduct = v1x * v2y - v1y * v2x; // cross product of v1 and v2
+            if (Math.Abs(crossProduct) < epsilon)
+            {
+                return 0; // collinear
+            }
+            return crossProduct > 0 ? 1 : -1; // counter-clockwise or clockwise
+        }
     }
 }
