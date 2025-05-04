@@ -77,6 +77,20 @@ namespace Geasy.Tests
             Assert.True(HelperFunc.NearlyEqualFloat(vectorA.X, 1.0f), "X coordinate of vectorA should be 1.0f after /= operation");
             Assert.True(HelperFunc.NearlyEqualFloat(vectorA.Y, 2.0f), "Y coordinate of vectorA should be 2.0f after /= operation");
         }
-        
+
+        [Fact]
+        public void TestCrossAndDotProduct_Float()
+        {
+            Vector2dFloat vectorA = new Vector2dFloat(5.0f, -2.0f);
+            Vector2dFloat vectorB = new Vector2dFloat(3.0f, -4.0f);
+
+            // Cross product (in 2D, this is a scalar value)
+            double crossProduct = vectorA.X * vectorB.Y - vectorA.Y * vectorB.X;
+            Assert.True(HelperFunc.NearlyEqualDouble(crossProduct, -14.0), "Cross product should be -14.0");
+
+            // Dot product
+            double dotProduct = vectorA.X * vectorB.X + vectorA.Y * vectorB.Y;
+            Assert.True(HelperFunc.NearlyEqualDouble(dotProduct, 23.0), "Dot product should be 23.0");
+        }
     }
 }

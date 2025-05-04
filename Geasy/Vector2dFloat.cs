@@ -67,6 +67,22 @@ namespace Geasy
             return new Vector2dFloat((float)(v.X / scalar), (float)(v.Y / scalar));
         }
 
+        public static double Cross(Vector2dFloat a, Vector2dFloat b)
+        {
+            double ax = a.X, ay = a.Y;
+            double bx = b.X, by = b.Y;
+
+            return ax * by - ay * bx;
+        }
+
+        public static double Dot(Vector2dFloat a, Vector2dFloat b)
+        {
+            double ax = a.X, ay = a.Y;
+            double bx = b.X, by = b.Y;
+
+            return ax * bx + ay * by;
+        }
+
         public override string ToString() => $"({X}, {Y})";
     }
 }
