@@ -10,14 +10,14 @@ namespace Geasy.Tests
         public void TestGetterAndSetter_Float()
         {
             Point2dFloat point = new Point2dFloat(1.0f, 2.0f);
-            Assert.True(NearlyEqualFloat(point.X, 1.0f), "X coordinate should be 1.0f");
-            Assert.True(NearlyEqualFloat(point.Y, 2.0f), "Y coordinate should be 2.0f");
+            Assert.True(HelperFunc.NearlyEqualFloat(point.X, 1.0f), "X coordinate should be 1.0f");
+            Assert.True(HelperFunc.NearlyEqualFloat(point.Y, 2.0f), "Y coordinate should be 2.0f");
 
             point.X = 3.0f;
             point.Y = 4.0f;
 
-            Assert.True(NearlyEqualFloat(point.X, 3.0f), "X coordinate should be 3.0f");
-            Assert.True(NearlyEqualFloat(point.Y, 4.0f), "Y coordinate should be 4.0f");
+            Assert.True(HelperFunc.NearlyEqualFloat(point.X, 3.0f), "X coordinate should be 3.0f");
+            Assert.True(HelperFunc.NearlyEqualFloat(point.Y, 4.0f), "Y coordinate should be 4.0f");
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Geasy.Tests
             double expectedDistance = Math.Sqrt(3 * 3 + 4 * 4); // 5.0
             double actualDistance = pointA.DistanceTo(pointB);
 
-            Assert.True(NearlyEqualDouble(actualDistance, expectedDistance), "Distance should be approximately 5.0");
+            Assert.True(HelperFunc.NearlyEqualDouble(actualDistance, expectedDistance), "Distance should be approximately 5.0");
         }
 
         [Fact]
@@ -45,16 +45,6 @@ namespace Geasy.Tests
             Assert.False(pointA.Equals(null), "Point A should not be equal to null");
             int x = 5;
             Assert.False(pointA.Equals(x), "Point A should not be equal to an integer");
-        }
-
-        private static bool NearlyEqualFloat(float a, float b, float epsilon = 1e-6f)
-        {
-            return Math.Abs(a - b) < epsilon;
-        }
-
-        private static bool NearlyEqualDouble(double a, double b, double epsilon = 1e-9)
-        {
-            return Math.Abs(a - b) < epsilon;
         }
     }
 }
