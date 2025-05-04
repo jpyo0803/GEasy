@@ -38,6 +38,35 @@ namespace Geasy
             return new Vector2dFloat(end.X - start.X, end.Y - start.Y);
         }
 
+        public static Vector2dFloat operator +(Vector2dFloat a, Vector2dFloat b)
+        {
+            return new Vector2dFloat(a.X + b.X, a.Y + b.Y);
+        }
+
+        public static Vector2dFloat operator -(Vector2dFloat a, Vector2dFloat b)
+        {
+            return new Vector2dFloat(a.X - b.X, a.Y - b.Y);
+        }
+
+        public static Vector2dFloat operator *(Vector2dFloat v, double scalar)
+        {
+            return new Vector2dFloat((float)(v.X * scalar), (float)(v.Y * scalar));
+        }
+
+        public static Vector2dFloat operator /(Vector2dFloat v, double scalar)
+        {
+            // TODO(jpyo0803): if scalar is very close to zero, should it stop further calculation?
+            // or should it just return a zero vector? 
+            // also is 1e-9 a good value for epsilon?
+            const double epsilon = 1e-9; // use a small epsilon to avoid division by zero
+            if (Math.Abs(scalar) < epsilon)
+            {
+                throw new ArgumentException("Scalar cannot be zero.", nameof(scalar));
+            }
+
+            return new Vector2dFloat((float)(v.X / scalar), (float)(v.Y / scalar));
+        }
+
         public override string ToString() => $"({X}, {Y})";
     }
 }
