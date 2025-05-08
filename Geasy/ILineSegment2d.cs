@@ -13,5 +13,7 @@ namespace Geasy
         IVector2d<T> ToVector();
 
         int IsPointCCW(IPoint2d<T> point);
+
+        bool IsPointOnMe(IPoint2d<T> point);
     }
 }
