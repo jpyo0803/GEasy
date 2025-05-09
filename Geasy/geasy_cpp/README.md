@@ -1,5 +1,4 @@
 WINDOWS
-MINGW version: 6.3.0
 
 MINGW64 installation
 1. $ Install MSYS2
@@ -12,5 +11,5 @@ how to build (CMD 터미널 사용)
 3. $ mkdir build
 4. $ cd build
 5. $ cmake .. -G "MinGW Makefiles"
-6. $ mingw32-makemake
+6. $ mingw32-make
 7. libgeasy.dll을 <사용 프로젝트>\bin\debug에 넣으면됨

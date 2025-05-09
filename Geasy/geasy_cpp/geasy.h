@@ -1,19 +1,7 @@
-#pragma once // header guard
+#pragma once
 
-#ifdef _WIN32
-  #ifdef GEASY_EXPORTS
-    #define GEASY_API __declspec(dllexport)
-  #else
-    #define GEASY_API __declspec(dllimport)
-  #endif
-#endif
+namespace geasy {
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+float TestSum(float* arr, int size);
 
-GEASY_API float TestSum(float* arr, int size);
-
-#ifdef __cplusplus
 }
-#endif
