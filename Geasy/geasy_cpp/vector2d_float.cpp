@@ -31,7 +31,7 @@ double Vector2dFloat::Dot(const Vector2dFloat& v1, const Vector2dFloat& v2) {
   double v1y = static_cast<double>(v1.y_);
   double v2x = static_cast<double>(v2.x_);
   double v2y = static_cast<double>(v2.y_);
-  return v1x * v2x - v1y * v2y;
+  return v1x * v2x + v1y * v2y;
 }
 
 }  // namespace geasy

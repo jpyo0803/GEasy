@@ -26,3 +26,13 @@ add_custom_command(TARGET geasy_cpp POST_BUILD
     $<TARGET_FILE:geasy_cpp>
     ${CMAKE_SOURCE_DIR}/../../Geasy.Tests/bin/Debug/net8.0/
 )
+
+add_executable(geasy_tests
+    unittests.cpp
+    geasy.cpp         # 핵심 구현부
+    point2d_float.cpp
+    vector2d_float.cpp
+)
+
+target_link_libraries(geasy_tests PRIVATE geasy_cpp)
+target_include_directories(geasy_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
