@@ -8,6 +8,8 @@ add_library(geasy_cpp SHARED
     point2d_float.cpp
     vector2d_float.cpp
     segment2d_float.cpp
+    pnpoly_strategy.cpp
+    pnpoly.cpp
 )
 
 # C++17 사용
@@ -34,6 +36,8 @@ add_executable(geasy_tests
     point2d_float.cpp
     vector2d_float.cpp
     segment2d_float.cpp
+    pnpoly_strategy.cpp
+    pnpoly.cpp
 )
 
 target_link_libraries(geasy_tests PRIVATE geasy_cpp)

@@ -8,9 +8,19 @@ namespace GeasyRunner
     {
         static void Main(string[] args)
         {
-            List<float> arr = new List<float> { 1.0f, 2.0f, 3.0f };
-            float sum = Class1.TestSumCpp(arr);
-            Console.WriteLine($"Sum: {sum}");
+            var polygon = new List<IPoint2d<float>>
+            {
+                new Point2dFloat(0, 0),
+                new Point2dFloat(4, 0),
+                new Point2dFloat(4, 4),
+                new Point2dFloat(0, 4)
+            };
+
+            var insidePoint = new Point2dFloat(2, 2);
+            PointInPolygon.Test_Cpp(insidePoint, polygon);
+
+            var outsidePoint = new Point2dFloat(5, 5);
+            PointInPolygon.Test_Cpp(outsidePoint, polygon);
         }
     }
 }

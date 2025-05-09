@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 // using System.Linq;
 
 namespace Geasy
@@ -43,6 +44,30 @@ namespace Geasy
             // If winding count is not zero, the point is inside the polygon
             // If winding count is zero, the point is outside the polygon
             return winding_cnt != 0;
+        }
+
+        [DllImport("geasy_cpp.dll", CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.I1)] // ✅ bool 반환 시 필요
+        private static extern bool PNPolyFloat(
+            float point_x,
+            float point_y,
+            [In] float[] polygon_x_arr,
+            [In] float[] polygon_y_arr,
+            int size);
+
+        public static bool Test_Cpp(IPoint2d<float> point, List<IPoint2d<float>> polygon)
+        {
+            int size = polygon.Count;
+            float[] polygon_x_arr = new float[size];
+            float[] polygon_y_arr = new float[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                polygon_x_arr[i] = polygon[i].X;
+                polygon_y_arr[i] = polygon[i].Y;
+            }
+
+            return PNPolyFloat(point.X, point.Y, polygon_x_arr, polygon_y_arr, size);
         }
     }
 }
