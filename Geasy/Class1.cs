@@ -16,7 +16,7 @@ namespace Geasy
             return a + b;
         }
 
-        [DllImport("libgeasy.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("geasy_cpp.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern float TestSum(float[] arr, int size);
 
         public static float TestSumCpp(List<float> list)
