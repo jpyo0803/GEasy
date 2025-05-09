@@ -1,4 +1,6 @@
 ﻿using Geasy;
+using System;
+using System.Collections.Generic;
 
 namespace GeasyRunner
 {
@@ -6,7 +8,9 @@ namespace GeasyRunner
     {
         static void Main(string[] args)
         {
-            Class1.PrintHelloWorld();
+            List<float> arr = new List<float> { 1.0f, 2.0f, 3.0f };
+            float sum = Class1.TestSumCpp(arr);
+            Console.WriteLine($"Sum: {sum}");
         }
     }
 }
