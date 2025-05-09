@@ -49,7 +49,7 @@ int Vector2dFloat::CCW(const Vector2dFloat& v1, const Vector2dFloat& v2) {
   double cross_result = Cross(v1, v2);
   if (cross_result > kEpsilon)
     return 1;  // ccw
-  else if (cross_result < kEpsilon)
+  else if (cross_result < -kEpsilon)
     return -1;  // cw
   return 0;     // colinear
 }

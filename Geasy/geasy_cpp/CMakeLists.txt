@@ -7,6 +7,7 @@ add_library(geasy_cpp SHARED
     geasy.cpp         # 핵심 구현부
     point2d_float.cpp
     vector2d_float.cpp
+    segment2d_float.cpp
 )
 
 # C++17 사용
@@ -32,6 +33,7 @@ add_executable(geasy_tests
     geasy.cpp         # 핵심 구현부
     point2d_float.cpp
     vector2d_float.cpp
+    segment2d_float.cpp
 )
 
 target_link_libraries(geasy_tests PRIVATE geasy_cpp)

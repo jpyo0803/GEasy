@@ -1,8 +1,11 @@
 #include <cassert>
 #include <iostream>
 #include "custom_assert.h"
+#include "point2d_float.h"
+#include "segment2d_float.h"
 #include "vector2d_float.h"
 
+using namespace std;
 using namespace geasy;
 
 void TestVector2dFloat() {
@@ -34,8 +37,51 @@ void TestVector2dFloat() {
   ASSERT_NEAR(v7_length, 8.6023252, kEpsilon);
 }
 
+void TestSegment2dFloat() {
+  Segment2dFloat s1({0, 0}, {5, 5});
+
+  Point2dFloat p1(0, 0);  // true
+  Point2dFloat p2(3, 3);  // true
+  Point2dFloat p3(5, 5);  // true
+  Point2dFloat p4(5, 4);  // false
+  Point2dFloat p5(5, 6);  // false
+
+  ASSERT_EQUAL(s1.CCWOfPointAboutMe(p1), 0);
+  ASSERT_EQUAL(s1.CCWOfPointAboutMe(p2), 0);
+  ASSERT_EQUAL(s1.CCWOfPointAboutMe(p3), 0);
+  ASSERT_EQUAL(s1.CCWOfPointAboutMe(p4), -1);
+  ASSERT_EQUAL(s1.CCWOfPointAboutMe(p5), 1);
+
+  ASSERT_TRUE(s1.IsPointOnMe(p1));
+  ASSERT_TRUE(s1.IsPointOnMe(p2));
+  ASSERT_TRUE(s1.IsPointOnMe(p3));
+  ASSERT_FALSE(s1.IsPointOnMe(p4));
+  ASSERT_FALSE(s1.IsPointOnMe(p5));
+}
+
+void TestSegment2dFloat2() {
+  Segment2dFloat s1({-5, 0}, {5, 0});
+
+  Segment2dFloat s2({0, -5}, {0, 5});
+  ASSERT_TRUE(Segment2dFloat::IsIntersect(s1, s2));
+
+  Segment2dFloat s3({6, -5}, {6, 5});
+  ASSERT_FALSE(Segment2dFloat::IsIntersect(s1, s3));
+
+  Segment2dFloat s4({5, -5}, {5, 5});
+  ASSERT_TRUE(Segment2dFloat::IsIntersect(s1, s4));
+
+  Segment2dFloat s5({5, 0}, {5, 9});
+  ASSERT_TRUE(Segment2dFloat::IsIntersect(s1, s5));
+
+  Segment2dFloat s6({0, 0.5}, {0, 10});
+  ASSERT_FALSE(Segment2dFloat::IsIntersect(s1, s6));
+}
+
 void RunTests() {
   TestVector2dFloat();
+  TestSegment2dFloat();
+  TestSegment2dFloat2();
 }
 
 int main(int argc, char** argv) {
