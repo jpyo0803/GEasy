@@ -14,6 +14,8 @@ class Vector2dFloat : public IVector2d<float> {
   void set_x(float x) override;
   void set_y(float y) override;
 
+  double Length() const;
+
   static double Cross(const Vector2dFloat& v1, const Vector2dFloat& v2);
 
   static double Dot(const Vector2dFloat& v1, const Vector2dFloat& v2);

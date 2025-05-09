@@ -28,6 +28,10 @@ void TestVector2dFloat() {
   Vector2dFloat v6(1, -1);
   int ccw_result3 = Vector2dFloat::CCW(v3, v6);
   assert(ccw_result2 == -1);
+
+  Vector2dFloat v7(-5, 7);
+  double v7_length = v7.Length();
+  ASSERT_NEAR(v7_length, 8.6023252, kEpsilon);
 }
 
 void RunTests() {

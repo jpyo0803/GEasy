@@ -1,4 +1,5 @@
 #include "vector2d_float.h"
+#include <cmath>
 
 namespace {
 constexpr double kEpsilon = 1e-6;
@@ -20,6 +21,12 @@ void Vector2dFloat::set_x(float x) {
 }
 void Vector2dFloat::set_y(float y) {
   y_ = y;
+}
+
+double Vector2dFloat::Length() const {
+  double x = static_cast<double>(x_);
+  double y = static_cast<double>(y_);
+  return std::sqrt(x * x + y * y);
 }
 
 double Vector2dFloat::Cross(const Vector2dFloat& v1, const Vector2dFloat& v2) {
