@@ -1,5 +1,9 @@
 #include "vector2d_float.h"
 
+namespace {
+constexpr double kEpsilon = 1e-6;
+}
+
 namespace geasy {
 
 Vector2dFloat::Vector2dFloat(float x, float y) : x_(x), y_(y) {}
@@ -32,6 +36,15 @@ double Vector2dFloat::Dot(const Vector2dFloat& v1, const Vector2dFloat& v2) {
   double v2x = static_cast<double>(v2.x_);
   double v2y = static_cast<double>(v2.y_);
   return v1x * v2x + v1y * v2y;
+}
+
+int Vector2dFloat::CCW(const Vector2dFloat& v1, const Vector2dFloat& v2) {
+  double cross_result = Cross(v1, v2);
+  if (cross_result > kEpsilon)
+    return 1;  // ccw
+  else if (cross_result < kEpsilon)
+    return -1;  // cw
+  return 0;     // colinear
 }
 
 }  // namespace geasy

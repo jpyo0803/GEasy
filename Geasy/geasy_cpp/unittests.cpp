@@ -15,6 +15,19 @@ void TestVector2dFloat() {
 
   double dot_result = Vector2dFloat::Dot(v1, v2);
   ASSERT_NEAR(dot_result, 18.7432509, kEpsilon);
+
+  Vector2dFloat v3(1, 0);
+  Vector2dFloat v4(1, 1);
+  int ccw_result1 = Vector2dFloat::CCW(v3, v4);
+  assert(ccw_result1 == 1);
+
+  Vector2dFloat v5(1, 0);
+  int ccw_result2 = Vector2dFloat::CCW(v3, v5);
+  assert(ccw_result2 == 0);
+
+  Vector2dFloat v6(1, -1);
+  int ccw_result3 = Vector2dFloat::CCW(v3, v6);
+  assert(ccw_result2 == -1);
 }
 
 void RunTests() {

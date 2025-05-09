@@ -18,6 +18,8 @@ class Vector2dFloat : public IVector2d<float> {
 
   static double Dot(const Vector2dFloat& v1, const Vector2dFloat& v2);
 
+  static int CCW(const Vector2dFloat& v1, const Vector2dFloat& v2);
+
  private:
   float x_, y_;
 };
