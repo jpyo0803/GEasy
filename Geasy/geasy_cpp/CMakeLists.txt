@@ -17,3 +17,12 @@ target_compile_definitions(geasy_cpp PRIVATE GEASY_EXPORTS)
 
 # 헤더 포함 경로 설정
 target_include_directories(geasy_cpp PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_custom_command(TARGET geasy_cpp POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_FILE:geasy_cpp>
+    ${CMAKE_SOURCE_DIR}/../../GeasyRunner/bin/Debug/net8.0/
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_FILE:geasy_cpp>
+    ${CMAKE_SOURCE_DIR}/../../Geasy.Tests/bin/Debug/net8.0/
+)
