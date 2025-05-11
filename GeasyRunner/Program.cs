@@ -8,19 +8,38 @@ namespace GeasyRunner
     {
         static void Main(string[] args)
         {
-            var polygon = new List<IPoint2d<float>>
+            // make polygon with randomly generated 1 M points
+            var polygon = new List<IPoint2d<float>>();
+            Random random = new Random();
+            for (int i = 0; i < 100000000; i++)
             {
-                new Point2dFloat(0, 0),
-                new Point2dFloat(4, 0),
-                new Point2dFloat(4, 4),
-                new Point2dFloat(0, 4)
-            };
+                float x = (float)(random.NextDouble() * 100);
+                float y = (float)(random.NextDouble() * 100);
+                polygon.Add(new Point2dFloat(x, y));
+            }
 
-            var insidePoint = new Point2dFloat(2, 2);
-            PointInPolygon.Test_Cpp(insidePoint, polygon);
+            // generate one point
+            float pointX = (float)(random.NextDouble() * 100);
+            float pointY = (float)(random.NextDouble() * 100);
 
-            var outsidePoint = new Point2dFloat(5, 5);
-            PointInPolygon.Test_Cpp(outsidePoint, polygon);
+            var point = new Point2dFloat(pointX, pointY);
+            // test if point is in polygon
+
+            // measure time
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            bool isInPolygon = PointInPolygon.IsPointInPolygon(point, polygon);
+            watch.Stop();
+            Console.WriteLine($"Time taken for C#: {watch.ElapsedMilliseconds} ms");
+            // measure time for C++ version
+            watch.Restart();
+            bool isInPolygonCpp = PointInPolygon.Test_Cpp(point, polygon);
+            watch.Stop();
+            Console.WriteLine($"Time taken for C++: {watch.ElapsedMilliseconds} ms");
+
+            // print result
+            Console.WriteLine($"Point: ({pointX}, {pointY})");
+            Console.WriteLine($"Is in polygon: {isInPolygon}");
+            Console.WriteLine($"Is in polygon (C++): {isInPolygonCpp}");
         }
     }
 }

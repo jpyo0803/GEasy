@@ -1,7 +1,7 @@
 #include "geasy.h"
 #include <memory>
-#include "pnpoly.h"
-#include "pnpoly_strategy.h"
+#include "pnpoly/pnpoly.h"
+#include "pnpoly/pnpoly_strategy.h"
 
 namespace geasy {
 
