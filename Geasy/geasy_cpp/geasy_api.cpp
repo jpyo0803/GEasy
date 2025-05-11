@@ -9,3 +9,9 @@ bool PNPolyFloat(float point_x, float point_y, float* polygon_x_arr, float* poly
                  int size) {
   return geasy::PNPolyFloat(point_x, point_y, polygon_x_arr, polygon_y_arr, size);
 }
+
+void ClosestPairFloat(float* point_x_arr, float* point_y_arr, int size, float* out_x1,
+                      float* out_y1, float* out_x2, float* out_y2, double* out_min_dist) {
+  geasy::ClosestPairFloat(point_x_arr, point_y_arr, size, out_x1, out_y1, out_x2, out_y2,
+                          out_min_dist);
+}

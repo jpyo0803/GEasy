@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 // using System.Linq;
 
 namespace Geasy
@@ -143,6 +144,38 @@ namespace Geasy
             }
 
             return ((closest_point1, closest_point2), min_dist);
+        }
+
+
+        [DllImport("geasy_cpp.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void ClosestPairFloat(
+            [In] float[] points_x_arr,
+            [In] float[] points_y_arr,
+            int size,
+            out float x1,
+            out float y1,
+            out float x2,
+            out float y2,
+            out double min_dist);
+
+        public static ((IPoint2d<float>, IPoint2d<float>) pair, double distance) Solve_Cpp(List<IPoint2d<float>> points)
+        {
+            int size = points.Count;
+            float[] points_x_arr = new float[size];
+            float[] points_y_arr = new float[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                points_x_arr[i] = points[i].X;
+                points_y_arr[i] = points[i].Y;
+            }
+
+            float x1, y1, x2, y2;
+            double min_dist;
+            ClosestPairFloat(points_x_arr, points_y_arr, size, out x1, out y1, out x2, out y2, out min_dist);
+            var point1 = new Point2dFloat(x1, y1);
+            var point2 = new Point2dFloat(x2, y2);
+            return ((point1, point2), min_dist);
         }
     }
 }

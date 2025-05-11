@@ -10,6 +10,8 @@ add_library(geasy_cpp SHARED
     segment2d_float.cpp
     pnpoly/pnpoly_strategy.cpp
     pnpoly/pnpoly.cpp
+    closest_pair/closest_pair_strategy.cpp
+    closest_pair/closest_pair.cpp
 )
 
 # C++17 사용
@@ -38,6 +40,8 @@ add_executable(geasy_tests
     segment2d_float.cpp
     pnpoly/pnpoly_strategy.cpp
     pnpoly/pnpoly.cpp
+    closest_pair/closest_pair_strategy.cpp
+    closest_pair/closest_pair.cpp
 )
 
 target_link_libraries(geasy_tests PRIVATE geasy_cpp)

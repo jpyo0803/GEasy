@@ -14,6 +14,8 @@ class Point2dFloat : public IPoint2d<float> {
   void set_x(float x) override;
   void set_y(float y) override;
 
+  static double Distance(const Point2dFloat& p1, const Point2dFloat& p2);
+
  private:
   float x_, y_;
 };

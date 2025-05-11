@@ -31,6 +31,9 @@ namespace Geasy.Tests
 
             var result = ClosestPair.Solve(points);
             Assert.True(HelperFunc.NearlyEqualDouble(result.Item2, expectedDistance), "Distance should be approximately 10.0");
+
+            var result_cpp = ClosestPair.Solve_Cpp(points);
+            Assert.True(HelperFunc.NearlyEqualDouble(result_cpp.Item2, expectedDistance), "Distance should be approximately 10.0");
         }
 
         [Fact]
@@ -49,6 +52,9 @@ namespace Geasy.Tests
 
             var result = ClosestPair.Solve(points);
             Assert.True(HelperFunc.NearlyEqualDouble(result.Item2, expectedDistance), "Distance should be approximately 1.414");
+
+            var result_cpp = ClosestPair.Solve_Cpp(points);
+            Assert.True(HelperFunc.NearlyEqualDouble(result_cpp.Item2, expectedDistance), "Distance should be approximately 1.414");
         }
 
         [Fact]
@@ -76,6 +82,11 @@ namespace Geasy.Tests
             Assert.True(HelperFunc.NearlyEqualDouble(result.Item2, expectedDistance), "Distance should be approximately 3.0");
             Assert.True(result.Item1.Item1.X == -2 && result.Item1.Item1.Y == 100, "First point should be (-2, 100)");
             Assert.True(result.Item1.Item2.X == 1 && result.Item1.Item2.Y == 100, "Second point should be (1, 100)");
+
+            var result_cpp = ClosestPair.Solve_Cpp(points);
+            Assert.True(HelperFunc.NearlyEqualDouble(result_cpp.Item2, expectedDistance), "Distance should be approximately 3.0");
+            Assert.True(result_cpp.Item1.Item1.X == -2 && result_cpp.Item1.Item1.Y == 100, "First point should be (-2, 100)");
+            Assert.True(result_cpp.Item1.Item2.X == 1 && result_cpp.Item1.Item2.Y == 100, "Second point should be (1, 100)");
         }
 
         [Fact]
@@ -109,6 +120,11 @@ namespace Geasy.Tests
             Assert.True(HelperFunc.NearlyEqualDouble(result.Item2, expectedDistance), "Distance should be approximately 3.0");
             Assert.True(result.Item1.Item1.X == -1 && result.Item1.Item1.Y == 1, "First point should be (-1, 1)");
             Assert.True(result.Item1.Item2.X == 2 && result.Item1.Item2.Y == 1, "Second point should be (2, 1)");
+
+            var result_cpp = ClosestPair.Solve_Cpp(points);
+            Assert.True(HelperFunc.NearlyEqualDouble(result_cpp.Item2, expectedDistance), "Distance should be approximately 3.0");
+            Assert.True(result_cpp.Item1.Item1.X == -1 && result_cpp.Item1.Item1.Y == 1, "First point should be (-1, 1)");
+            Assert.True(result_cpp.Item1.Item2.X == 2 && result_cpp.Item1.Item2.Y == 1, "Second point should be (2, 1)");
         }
     }
 }
