@@ -10,4 +10,11 @@ how to build (CMD 터미널 사용)
 3. $ mkdir build
 4. $ cmake -B build -G "Visual Studio 17 2022" -A x64
 5. $ cmake --build build --config Release
-6. build/Release/geasy_cpp.dll을 <사용 프로젝트>\bin\debug에 넣으면됨
+
+
+MACOS / LINUX
+1. go to "geasy_cpp" directory
+2. $ mkdir build
+3. $ cd build
+3. $ cmake .. 
+4. $ make
