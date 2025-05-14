@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Geasy
 {
@@ -58,6 +59,40 @@ namespace Geasy
             }
 
             return unique;
+        }
+
+        [DllImport(NativeLibrary.LIB_NAME, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void ConvexHullFloat(
+            [In] float[] points_x_arr,
+            [In] float[] points_y_arr,
+            int size,
+            [Out] float[] hull_x_arr,
+            [Out] float[] hull_y_arr,
+            out int hull_size);
+
+        public static List<IPoint2d<float>> Build_Cpp(List<IPoint2d<float>> points)
+        {
+            int size = points.Count;
+            float[] points_x_arr = new float[size];
+            float[] points_y_arr = new float[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                points_x_arr[i] = points[i].X;
+                points_y_arr[i] = points[i].Y;
+            }
+
+            float[] hull_x_arr = new float[size];
+            float[] hull_y_arr = new float[size];
+            ConvexHullFloat(points_x_arr, points_y_arr, size, hull_x_arr, hull_y_arr, out int hull_size);
+
+            var hull = new List<IPoint2d<float>>(hull_size);
+            for (int i = 0; i < hull_size; i++)
+            {
+                hull.Add(new Point2dFloat(hull_x_arr[i], hull_y_arr[i]));
+            }
+
+            return hull;
         }
     }
 }

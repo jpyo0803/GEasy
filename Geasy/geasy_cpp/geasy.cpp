@@ -6,6 +6,9 @@
 #include "closest_pair/closest_pair.h"
 #include "closest_pair/closest_pair_strategy.h"
 
+#include "convex_hull/convex_hull.h"
+#include "convex_hull/convex_hull_strategy.h"
+
 namespace geasy {
 
 float TestSum(float* arr, int size) {
@@ -52,4 +55,23 @@ void ClosestPairFloat(float* point_x_arr, float* point_y_arr, int size, float* o
   *out_min_dist = result.second;
 }
 
+void ConvexHullFloat(float* point_x_arr, float* point_y_arr, int size, float* out_point_x_arr,
+                     float* out_point_y_arr, int* out_size) {
+  ConvexHull obj;
+  obj.set_strategy(std::make_unique<MonotoneChainMethod>());
+
+  std::vector<Point2dFloat> points;
+  points.reserve(size);
+
+  for (int i = 0; i < size; ++i) {
+    points.emplace_back(point_x_arr[i], point_y_arr[i]);
+  }
+
+  auto result = obj.Build(points);
+  *out_size = result.size();
+  for (int i = 0; i < *out_size; ++i) {
+    out_point_x_arr[i] = result.at(i).x();
+    out_point_y_arr[i] = result.at(i).y();
+  }
+}
 }  // namespace geasy

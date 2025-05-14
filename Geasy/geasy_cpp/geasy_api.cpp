@@ -15,3 +15,9 @@ void ClosestPairFloat(float* point_x_arr, float* point_y_arr, int size, float* o
   geasy::ClosestPairFloat(point_x_arr, point_y_arr, size, out_x1, out_y1, out_x2, out_y2,
                           out_min_dist);
 }
+
+void ConvexHullFloat(float* point_x_arr, float* point_y_arr, int size, float* out_point_x_arr,
+                     float* out_point_y_arr, int* out_size) {
+  geasy::ConvexHullFloat(point_x_arr, point_y_arr, size, out_point_x_arr, out_point_y_arr,
+                         out_size);
+}

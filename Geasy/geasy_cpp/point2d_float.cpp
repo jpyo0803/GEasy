@@ -19,6 +19,10 @@ void Point2dFloat::set_y(float y) {
   y_ = y;
 }
 
+bool Point2dFloat::operator==(const Point2dFloat& other) const {
+  return x_ == other.x_ && y_ == other.y_;
+}
+
 double Point2dFloat::Distance(const Point2dFloat& p1, const Point2dFloat& p2) {
   double p1x = static_cast<double>(p1.x_), p1y = static_cast<double>(p1.y_);
   double p2x = static_cast<double>(p2.x_), p2y = static_cast<double>(p2.y_);

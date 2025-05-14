@@ -37,6 +37,15 @@ namespace Geasy.Tests
                     HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
                     HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
             }
+
+            var actualHullCpp = ConvexHull.Build_Cpp(points);
+            Assert.Equal(expectedHull.Count, actualHullCpp.Count);
+            foreach (var expected in expectedHull)
+            {
+                Assert.Contains(actualHullCpp, actual =>
+                    HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
+                    HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
+            }
         }
 
         [Fact]
@@ -61,6 +70,16 @@ namespace Geasy.Tests
             foreach (var expected in expectedHull)
             {
                 Assert.Contains(actualHull, actual =>
+                    HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
+                    HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
+            }
+
+            var actualHullCpp = ConvexHull.Build_Cpp(points);
+
+            Assert.Equal(expectedHull.Count, actualHullCpp.Count);
+            foreach (var expected in expectedHull)
+            {
+                Assert.Contains(actualHullCpp, actual =>
                     HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
                     HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
             }
@@ -90,6 +109,16 @@ namespace Geasy.Tests
             foreach (var expected in expectedHull)
             {
                 Assert.Contains(actualHull, actual =>
+                    HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
+                    HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
+            }
+
+            var actualHullCpp = ConvexHull.Build_Cpp(points);
+
+            Assert.Equal(expectedHull.Count, actualHullCpp.Count);
+            foreach (var expected in expectedHull)
+            {
+                Assert.Contains(actualHullCpp, actual =>
                     HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
                     HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
             }
@@ -126,6 +155,16 @@ namespace Geasy.Tests
                     HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
                     HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
             }
+
+            var actualHullCpp = ConvexHull.Build_Cpp(points);
+            Assert.Equal(expectedHull.Count, actualHullCpp.Count);
+
+            foreach (var expected in expectedHull)
+            {
+                Assert.Contains(actualHullCpp, actual =>
+                    HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
+                    HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
+            }
         }
 
         [Fact]
@@ -156,7 +195,16 @@ namespace Geasy.Tests
                 Assert.True(HelperFunc.NearlyEqualFloat(expectedHull[i].X, actualHull[i].X));
                 Assert.True(HelperFunc.NearlyEqualFloat(expectedHull[i].Y, actualHull[i].Y));
             }
+
+            var actualHullCpp = ConvexHull.Build_Cpp(points);
+            Assert.Equal(expectedHull.Count, actualHullCpp.Count);
+            for (int i = 0; i < expectedHull.Count; i++)
+            {
+                Assert.True(HelperFunc.NearlyEqualFloat(expectedHull[i].X, actualHullCpp[i].X));
+                Assert.True(HelperFunc.NearlyEqualFloat(expectedHull[i].Y, actualHullCpp[i].Y));
+            }
         }
+
         [Fact]
         public void TestConvexHull_ThousandPointsOnCircle()
         {
@@ -173,6 +221,12 @@ namespace Geasy.Tests
             var hull = ConvexHull.Construct(points);
 
             Assert.True(hull.Count >= 10); // 원이므로 많은 점이 외곽에 있어야 함
+
+            // Check if the hull points are on the circle
+
+            var hull_cpp = ConvexHull.Build_Cpp(points);
+
+            Assert.True(hull_cpp.Count >= 10); // 원이므로 많은 점이 외곽에 있어야 함
         }
         [Fact]
         public void TestConvexHull_HighPrecisionPoints()
@@ -239,6 +293,16 @@ namespace Geasy.Tests
             foreach (var expected in expectedHull)
             {
                 Assert.Contains(actualHull, actual =>
+                    HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
+                    HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
+            }
+
+            var actualHullCpp = ConvexHull.Build_Cpp(points);
+
+            Assert.Equal(expectedHull.Count, actualHullCpp.Count);
+            foreach (var expected in expectedHull)
+            {
+                Assert.Contains(actualHullCpp, actual =>
                     HelperFunc.NearlyEqualFloat(expected.X, actual.X) &&
                     HelperFunc.NearlyEqualFloat(expected.Y, actual.Y));
             }

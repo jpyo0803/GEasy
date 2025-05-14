@@ -12,6 +12,8 @@ add_library(geasy_cpp SHARED
     pnpoly/pnpoly.cpp
     closest_pair/closest_pair_strategy.cpp
     closest_pair/closest_pair.cpp
+    convex_hull/convex_hull_strategy.cpp
+    convex_hull/convex_hull.cpp
 )
 
 # C++17 사용
@@ -42,6 +44,8 @@ add_executable(geasy_tests
     pnpoly/pnpoly.cpp
     closest_pair/closest_pair_strategy.cpp
     closest_pair/closest_pair.cpp
+    convex_hull/convex_hull_strategy.cpp
+    convex_hull/convex_hull.cpp
 )
 
 target_link_libraries(geasy_tests PRIVATE geasy_cpp)
