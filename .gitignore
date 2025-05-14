@@ -135,4 +135,6 @@ _NCrunch*
 # My ignore list
 .vscode
 *.dll
+*.dylib
+*.so
 build

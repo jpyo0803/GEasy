@@ -147,7 +147,8 @@ namespace Geasy
         }
 
 
-        [DllImport("geasy_cpp.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.LIB_NAME, CallingConvention = CallingConvention.Cdecl)]
+
         private static extern void ClosestPairFloat(
             [In] float[] points_x_arr,
             [In] float[] points_y_arr,

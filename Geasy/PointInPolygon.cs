@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 // using System.Linq;
 
+
+
 namespace Geasy
 {
-
     public class PointInPolygon
     {
         public static bool IsPointInPolygon(IPoint2d<float> point, List<IPoint2d<float>> polygon)
@@ -46,7 +47,7 @@ namespace Geasy
             return winding_cnt != 0;
         }
 
-        [DllImport("geasy_cpp.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibrary.LIB_NAME, CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.I1)] // ✅ bool 반환 시 필요
         private static extern bool PNPolyFloat(
             float point_x,

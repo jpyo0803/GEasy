@@ -1,11 +1,14 @@
 #pragma once  // header guard
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(_WIN64)
 #ifdef GEASY_EXPORTS
 #define GEASY_API __declspec(dllexport)
 #else
 #define GEASY_API __declspec(dllimport)
 #endif
+#else
+// For non-Windows (Linux, macOS), define it as empty
+#define GEASY_API
 #endif
 
 #ifdef __cplusplus

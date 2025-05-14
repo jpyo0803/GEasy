@@ -11,7 +11,7 @@ namespace GeasyRunner
             // make polygon with randomly generated 1 M points
             var polygon = new List<IPoint2d<float>>();
             Random random = new Random();
-            for (int i = 0; i < 100000000; i++)
+            for (int i = 0; i < 10000000; i++)
             {
                 float x = (float)(random.NextDouble() * 100);
                 float y = (float)(random.NextDouble() * 100);
