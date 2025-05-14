@@ -1,5 +1,3 @@
-#pragma once
-
 #include "closest_pair.h"
 
 namespace geasy {

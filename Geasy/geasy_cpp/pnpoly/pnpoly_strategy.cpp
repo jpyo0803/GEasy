@@ -1,5 +1,3 @@
-#pragma once
-
 #include "pnpoly_strategy.h"
 #include <algorithm>
 #include "segment2d_float.h"

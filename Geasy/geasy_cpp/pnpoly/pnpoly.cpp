@@ -1,5 +1,3 @@
-#pragma once
-
 #include "pnpoly.h"
 
 namespace geasy {
